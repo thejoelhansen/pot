@@ -10,6 +10,7 @@ def run(parsed_command):
     print(f"Running: {cmd}")  # debug
 
     try:
+        # --- Execute parsed_command
         output = subprocess.run(
             shlex.split(cmd), # Safer than split(), according to stack overflow 
             check=True,
@@ -17,7 +18,8 @@ def run(parsed_command):
             text=True
         )
         print(output.stdout)
-
+        # ---
+    
     except subprocess.CalledProcessError as error:
         print("Command failed")
         print("Return code:", error.returncode)
